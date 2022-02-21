@@ -1,19 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import axiosWithAuth from './../utils/axiosWithAuth';
 
 const Logout = () => {      
     const { push } = useHistory();
+    let [goodbye,setGoodbye] = useState();
 
     useEffect(()=> {
         axiosWithAuth()
-            .post('/auth/logout')
+            .get('/auth/logout')
             .then(resp => {
-                localStorage.removeItem('cookie');
+                //res.message !
+                setGoodbye(resp.message)
                 push('/login');
             });
     }, []);  //eslint-disable-line
-    return(<div></div>);
+    return(<div>
+        <h2>{goodbye}</h2>
+    </div>);
 }
 
 export default Logout;
