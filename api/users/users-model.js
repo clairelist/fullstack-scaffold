@@ -32,13 +32,10 @@ function findById(user_id) {
     return findById(id);
   }
 
-  //NOTE TO FUTURE CLAIRE:: 'DELETE' IS A RESERVED WORD BY JAVASCRIPT, HENCE WE MUST CALL THIS DELETEBYID !
  function deleteById(user_id) {
   return lego('users').where({ id: user_id }).del();
 
 }
-
-// Don't forget to add these to the `exports` object so they can be required in other modules
 
 module.exports = {
   add,

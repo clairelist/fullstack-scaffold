@@ -12,15 +12,12 @@ const Users = require("./users-model");
       .catch(next)
   })
   
-  //router DELETE requesty !
   //POST to '/delete_account', supply user id. Only accessable to logged in users !
   router.post('/delete_account', restricted, (req,res,next) => {
-    //call Users.deleteById, passing in the id !
-    const {user_id} = req.params.id; //let's write a test that this works !!
+    const {user_id} = req.params.id; 
     Users.deleteById(user_id)
       .then(()=>{
-        // res.status(200).json({message: 'Your account was succesfully deleted!'})
-        req.session.destroy((err)=>{ //logout delete sessiony logic here ! So it goes 'delete user in the db, and then log them out !'
+        req.session.destroy((err)=>{ 
           if (err){
               res.json({message: 'bad request !', status: 500})
           } else {
@@ -31,5 +28,4 @@ const Users = require("./users-model");
       })
   })})
 
-  //TODOS:: BUILD A CATCHALL ENDPOINT !
   module.exports = router;

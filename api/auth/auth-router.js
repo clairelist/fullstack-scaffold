@@ -13,11 +13,10 @@ router.post('/register',checkUsernameFree, checkPasswordLength, async (req,res,n
     const {username, password} = req.body;
 
     //hash the passwordr! 
-    const hash = bcrypt.hashSync(password, 8); //pass the thing being hashed, then the number of passes (see cryptography docs in canvas?) this nuymber has to do with configured 'slowness', and it actually represents 2^8 hashes
+    const hash = bcrypt.hashSync(password, 8); //pass the thing being hashed, then the number of passes
 
     //store in database !
     const newUser = {username, password: hash};
-    //storing password as hash means we are not storing the password itself in the database!
     const inserted = await User.add(newUser);
 
     //then, we respond
@@ -33,11 +32,11 @@ router.post('/login',checkUsernameExists,async(req,res,next)=>{
     const {username, password} = req.body;
 
     //pull user from db by that usernahme
-    const [user] = await User.findBy({username}); // --> array destructure because findBy returns an array
+    const [user] = await User.findBy({username}); 
     if (user && bcrypt.compareSync(password, user.password)) {
         //password 1, we initialize a session !
 
-        req.session.user = user; //this is the magic line. it tells server to keep track of this particular user ! This is how we persist the credentials
+        req.session.user = user; //this is the magic line.
 
         res.status(200).json({message: `Welcome ${username}!`});
     } else {
@@ -51,7 +50,7 @@ router.post('/login',checkUsernameExists,async(req,res,next)=>{
 
   router.get('/logout',(req,res)=>{
     if (req.session.user){
-        req.session.destroy((err)=>{ //this will 'destroy' the session, removing session id, even though the cookie remains. This means you cannot do anything with said cookie though !
+        req.session.destroy((err)=>{ 
             if (err){
                 res.json({message: 'bad request !', status: 500})
             } else {

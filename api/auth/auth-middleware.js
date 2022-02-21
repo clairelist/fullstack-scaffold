@@ -12,7 +12,7 @@ function restricted(req,res,next) {
 async function checkUsernameFree(req,res,next) {
   try {
     const username = await User.findBy({ username: req.body.username });
-    if (!username.length){ //if if this ^ array length is 0, we are happy and can go on. Pass the 'happy' path first !
+    if (!username.length){ //if if this ^ array length is 0, go on to next
       next();
     } else {
       res.status(422).json({message: 'Username taken'});
