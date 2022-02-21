@@ -15,6 +15,7 @@ This is a scaffold for a fullstack app, using Node.js and Express for the backen
 - POST to `/login`, for login functionality.
 - GET to `/logout`, which deletes the user token.
 - POST to `/`, to retrieve all users.
+- POST to `/delete_account`, which will delete a user from the database and destroy their session
 
 --> [ENDPOINTS] (CLIENT SIDE FUNC DESKY)::
 - you can currently:
