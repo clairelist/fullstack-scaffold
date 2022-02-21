@@ -1,4 +1,3 @@
-// DO NOT CHANGE THIS FILE
 exports.seed = function (knex) {
   return knex('users').insert({
     username: 'bob',
