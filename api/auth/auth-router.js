@@ -20,7 +20,7 @@ router.post('/register',checkUsernameFree, checkPasswordLength, async (req,res,n
     const inserted = await User.add(newUser);
 
     //then, we respond
-    res.status(200).json(inserted)
+    res.status(200).json(inserted.username) //fixed to not display the hash in our front end !
   } catch(err) {
     next(err)
   }

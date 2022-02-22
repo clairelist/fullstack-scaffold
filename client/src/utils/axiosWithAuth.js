@@ -1,10 +1,10 @@
 import axios from 'axios';
-//something like 'import login credentials from login component', for token auth, below (no need for localStorage :-) )
+//REFACTOR THIS FUNCTION:: TODO --> function returns the base url and thas it; will need to rename function
 
 const axiosWithAuth = ()=> {
     const token = localStorage.getItem('token');
 
-    return axios.create({ //creating a base URL -- TODO:: CHANGE THIS SO THE AUTHORIZATION IS USER PROVIDED ! THIS IS BEING POSTED AND OUR SERVER IS HANDLING HTE ACTUAL TOKEN !
+    return axios.create({
         headers: {
             authorization: token
         },
