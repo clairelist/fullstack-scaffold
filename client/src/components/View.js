@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axiosWithAuth from '../utils/axiosWithAuth'; //NOTE WE NEED TO RENAME THIS FUNCTION !!!!
+import baseUrl from '../utils/baseUrl'; //NOTE WE NEED TO RENAME THIS FUNCTION !!!!
 
 const View=()=>{
     const [users,setUsers] = useState([]);
 
     useEffect(() => { //REMEMBER TO RENAME THIS FUNC HERE TOO CLAIRE !
-        axiosWithAuth()
+        baseUrl()
         .get('/users')
         .then(res=>{
             setUsers(res.data); //lives on 'res.data' !

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import axiosWithAuth from './../utils/axiosWithAuth';
+import baseUrl from '../utils/baseUrl';
 
 const Logout = () => {      
     const { push } = useHistory();
     let [goodbye,setGoodbye] = useState();
 
     useEffect(()=> {
-        axiosWithAuth()
+        baseUrl()
             .get('/auth/logout')
             .then(resp => {
                 //res.message !

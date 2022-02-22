@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-//register endpoint :: http://localhost:9000/api/auth/register 
 
 class Register extends React.Component{
     //DATA SECTION !
