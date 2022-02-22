@@ -1,14 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { instanceOf } from 'prop-types';
-import { withCookies, Cookies } from 'react-cookie';
 // import { useHistory } from 'react-router-dom';
 
 class Login extends React.Component{
     //DATA SECTION !
-    static propTypes = {
-        cookies: instanceOf(Cookies).isRequired
-      };
     constructor(props){
         super(props);
         this.state = {
@@ -34,13 +29,10 @@ class Login extends React.Component{
     
       login = event => {
         event.preventDefault();
-        const { cookies } = this.props;
 
         axios.post('http://localhost:9000/api/auth/login', this.state.credentials)
           .then(res=> {
-            const { password, username } = res.data;
-            cookies.set("password", password);
-            cookies.set("username", username); //jhere's hopeing this works lol!
+            // const { password, username } = res.data; --> what are we returning from our server?
             this.props.history.push('/view');
           })
           .catch(err => {
@@ -74,4 +66,4 @@ class Login extends React.Component{
     }
 }
 
-export default withCookies(Login);
+export default Login;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import baseUrl from '../utils/baseUrl'; //NOTE WE NEED TO RENAME THIS FUNCTION !!!!
+import baseUrl from '../utils/baseUrl';
 
 const View=()=>{
     const [users,setUsers] = useState([]);
 
-    useEffect(() => { //REMEMBER TO RENAME THIS FUNC HERE TOO CLAIRE !
+    useEffect(() => {
         baseUrl()
         .get('/users')
         .then(res=>{
