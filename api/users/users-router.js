@@ -28,4 +28,14 @@ const Users = require("./users-model");
       })
   })})
 
+router.update('/update_info', restricted, (req,res,next) => {
+    const {user_id} = req.params.id; //?? check this is the thing!
+    Users.edit(user_id, userObj)
+    .then(()=>{
+      res.status(201).json(userObj); //this will have to be a NEW user object, returned by Users.edit()
+    }).catch(err=>{
+      next(err);
+    })
+  })
+
   module.exports = router;

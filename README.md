@@ -30,3 +30,5 @@ This is a scaffold for a fullstack app, using Node.js and Express for the backen
 --> [TODOS]
 - in `client`, build a `DeleteAccount` component
 - this will provide a front end interface for deleting the user's account (POST to `delete_account` request).
+
+- create an edit account endpoint and full backend functionality to edit an existing resources

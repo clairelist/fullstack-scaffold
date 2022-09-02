@@ -37,6 +37,11 @@ function findById(user_id) {
 
 }
 
+async function edit(user_id, user){ //'user' here is the user object to edit!
+  
+  return lego('users').where('user_id',user_id).editMethod('datafield',user)
+}
+
 module.exports = {
   add,
   find,
